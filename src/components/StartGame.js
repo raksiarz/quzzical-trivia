@@ -1,9 +1,9 @@
-function StartGame() {
+function StartGame(props) {
     return (
-        <div className = "main--box">
+        <div className = "start-game__box">
             <h2>Quzzical</h2>
             <h4>Description</h4>
-            <button>Start Game</button>
+            <button onClick = {props.handleClick}>Start Game</button>
         </div>
     )
 }
