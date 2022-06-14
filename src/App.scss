@@ -25,6 +25,28 @@
     justify-content: center;
     font-family: 'Karla', sans-serif;
     box-shadow: 2px 5px 7px rgba(0, 0, 0, .1);
+
+    .check-btn {
+        font-family: 'Karla', sans-serif;
+        padding: 1rem 3rem;
+        margin-bottom: 1rem;
+        height: 65px;
+        border: none;
+        border-radius: 18px;
+        background-color: #4D5B9E;
+        color: #F5F7FB;
+        cursor: pointer;
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, .15);
+        transition: all .25s ease;
+    }
+
+    .check-btn:hover {
+        background-color: #F5CBD2;
+        color: #293264;
+    }
 }
 
 .start-game__box {
@@ -59,6 +81,7 @@
         font-size: 17px;
         letter-spacing: 1px;
         font-weight: 700;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, .15);
         transition: all .25s ease;
     }
 
@@ -73,20 +96,25 @@
     margin: auto 0;
     text-align: center;
 
+    h3 {
+        font-weight: 400;
+    }
+
     .question-box--answers {
         display: flex;
         justify-content: center;
         align-items: center;
 
         a {
-            margin: 25px 10px;
+            margin: 15px 10px;
             cursor: pointer;
             letter-spacing: 1px;
             background-color: #F5F7FB;
             padding: 10px 25px;
             border-radius: 20px;
             box-shadow: 2px 3px 5px rgba(0, 0, 0, .15);
-            transition: all .2s ease;
+            transition: all .1s ease;
+            user-select: none;
         }
 
         a:hover {
