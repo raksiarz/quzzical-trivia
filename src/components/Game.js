@@ -1,6 +1,8 @@
+import { nanoid } from 'nanoid'
+
 function Game(props) {
     const incorrectAnswers = props.wrongAnswers.map(answer => {
-        return <a>{atob(answer)}</a>
+        return <a key = {nanoid()} onClick = {props.handleClick}>{atob(answer)}</a>
     })
 
     return (
@@ -8,7 +10,7 @@ function Game(props) {
             <h3>{atob(props.question)}</h3>
             <div className="question-box--answers">
                 {incorrectAnswers}
-                <a>{atob(props.correctAnswer)}</a>
+                <a key = {nanoid()} onClick = {props.handleClick}>{atob(props.correctAnswer)}</a>
             </div>
         </div>
     )
