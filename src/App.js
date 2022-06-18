@@ -8,11 +8,12 @@ import Game from './components/Game'
 function App() {
     const [isStarted, setIsStarted] = React.useState(false)
     const [triviaData, setTriviaData] = React.useState([])
+    const [checkAnswers, setChceckAnswers] = React.useState(false)
     const [selectAnswer, setSelectAnswer] = React.useState({
         id: '',
         isHeld: false
     })
-    const [checkAnswers, setChceckAnswers] = React.useState(false)
+    const [points, setPoints] = React.useState(0)
 
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&category=18&type=multiple&encode=base64')
@@ -28,10 +29,20 @@ function App() {
         setChceckAnswers(prevCheck => (
             !prevCheck
         ))
+
+        setPoints(0)
+
+        if(!checkAnswers) {
+            for(let i = 0; i < 5; i++) {
+                console.log(triviaData[i])
+                setPoints(prevVal => (
+                    prevVal += 1
+                ))
+        }}
     }
 
     function holdAnswer() {
-        setSelectAnswer(prevItem => {})
+        console.log(triviaData)
     }
 
     const triviaElements = triviaData.map(data => {
@@ -41,7 +52,7 @@ function App() {
             question = {data.question}
             wrongAnswers = {data.incorrect_answers}
             correctAnswer = {data.correct_answer}
-            answerSelection = {selectAnswer}
+            handleClick = {() => holdAnswer()}
         />
     })
 
@@ -54,7 +65,7 @@ function App() {
                     />
                 }
                 <div className="score-checking">
-                    {checkAnswers && isStarted && <p>You scored 3/5</p>}
+                    {checkAnswers && isStarted && <p>You scored {points} / 5 points</p>}
                     {isStarted && 
                         <button className = "check-btn" onClick = {handleCheckingAnswers}>
                             {checkAnswers ? "Play Again"  : "Check Answers"}
