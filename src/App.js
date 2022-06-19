@@ -8,11 +8,11 @@ import Game from './components/Game'
 function App() {
     const [isStarted, setIsStarted] = React.useState(false)
     const [triviaData, setTriviaData] = React.useState([])
-    const [checkAnswers, setChceckAnswers] = React.useState(false)
     const [selectAnswer, setSelectAnswer] = React.useState({
         id: '',
         isHeld: false
     })
+    const [checkAnswers, setChceckAnswers] = React.useState(false)
     const [points, setPoints] = React.useState(0)
 
     useEffect(() => {
@@ -25,6 +25,14 @@ function App() {
         setIsStarted(true)
     }
 
+    function holdAnswer() {
+        setSelectAnswer(prevItem => ({
+                ...prevItem,
+                isHeld: !prevItem.isHeld
+            }
+        ))
+    }
+
     function handleCheckingAnswers() {
         setChceckAnswers(prevCheck => (
             !prevCheck
@@ -34,15 +42,11 @@ function App() {
 
         if(!checkAnswers) {
             for(let i = 0; i < 5; i++) {
-                console.log(triviaData[i])
+                console.log(triviaData[i].correct_answer)
                 setPoints(prevVal => (
                     prevVal += 1
                 ))
         }}
-    }
-
-    function holdAnswer() {
-        console.log(triviaData)
     }
 
     const triviaElements = triviaData.map(data => {
@@ -52,6 +56,7 @@ function App() {
             question = {data.question}
             wrongAnswers = {data.incorrect_answers}
             correctAnswer = {data.correct_answer}
+            isHeld = {selectAnswer.isHeld}
             handleClick = {() => holdAnswer()}
         />
     })

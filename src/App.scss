@@ -30,6 +30,7 @@
         display: flex;
         width: 40%;
         padding: 1rem 0;
+        margin-bottom: .5rem;
         justify-content: space-around;
         align-items: center;
 
@@ -107,16 +108,18 @@
     font-family: 'Karla', sans-serif;
     margin: auto 0;
     text-align: center;
+    color: #293264;
 
     h3 {
         font-weight: 400;
+        margin-top: .5rem;
     }
 
     .question-box--answers {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: .75rem;
+        margin-top: .5rem;
 
         a {
             margin: 15px 10px;
@@ -131,7 +134,6 @@
         }
 
         a:hover {
-            background-color: #F5F7FB;
             box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
             transform: scale(.98);
         }
